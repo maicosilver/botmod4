@@ -222,7 +222,7 @@ conn.handler = async function (m) {
           console.log(e)
           m.reply(util.format(e))
         } finally {
-          if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
+          if (m.limit) m.reply(+ m.limit + ' Limite usado')
         }
   			break
   		}
