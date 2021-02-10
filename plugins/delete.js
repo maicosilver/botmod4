@@ -11,7 +11,18 @@ let handler = function (m) {
 }
 handler.help = ['del', 'delete']
 handler.tags = ['info']
-
 handler.command = /^del(ete)?$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = true
+handler.private = false
+
+handler.admin = true
+handler.botAdmin = true
+
+handler.fail = null
+handler.limit = true
 
 module.exports = handler
+
