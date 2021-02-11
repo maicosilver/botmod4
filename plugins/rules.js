@@ -1,17 +1,15 @@
 let handler  = async (m, { conn, usedPrefix: _p }) => {
   conn.reply(m.chat, `
-Syarat dan Ketentuan Bot *KAMI*
-1. Teks dan nama pengguna WhatsApp anda akan kami simpan di dalam server selama bot aktif
-2. Data akan di hapus ketika bot Offline
-3. Kami tidak menyimpan gambar, video, file, audio, dan dokumen yang anda kirim
-4. Kami tidak akan pernah meminta anda untuk memberikan informasi pribadi
-5. Jika menemukan Bug/Error silahkan langsung lapor ke Owner bot
-6. Juga kalau kalian ingin buat TUTORIAL BOT Langsung Lewat
-     ➥ YouTube: https://www.youtube.com/c/DrawlNag
-6. Apapun yang anda perintah pada bot ini, KAMI TIDAK AKAN BERTANGGUNG JAWAB!
+Termos e Condições do Bot *KAMI*
+1. O texto e seu nome de usuário do WhatsApp serão armazenados no servidor enquanto o bot estiver ativo
+2. Os dados serão excluídos quando o bot estiver offline
+3. Não armazenamos fotos, vídeos, arquivos, áudios e documentos que você envia
+4. Nunca pediremos que você forneça informações pessoais
+5. Se você encontrar um bug / erro, informe-o diretamente ao proprietário do bot
+6. O que quer que você peça neste bot, NÃO SEREMOS RESPONSÁVEIS!
 
-Thanks !
-2021©Drawl Nag
+Obrigado!
+2021 © 
 `.trim(), m)
 }
 handler.help = ['rules']
