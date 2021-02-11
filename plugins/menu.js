@@ -39,7 +39,6 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'xp': 'Exp & Limit',
       'sticker': 'Sticker',
       'kerang': 'Kerang Ajaib',
-      'quotes': 'Quotes',
       'admin': 'Admin',
       'group': 'Group',
       'internet': 'Internet',
