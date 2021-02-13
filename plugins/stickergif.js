@@ -2,26 +2,42 @@ const fetch = require('node-fetch')
 const FormData = require('form-data')
 const { MessageType } = require('@adiwajshing/baileys')
 
-let handler  = async (m, { conn, args }) => {
-  let q = m.quoted ? { message: { [m.quoted.mtype]: m.quoted }} : m
-  if (/image/.test((m.quoted ? m.quoted : m).mtype)) {
-    let img = await conn.downloadM(q)
-    if (!img) throw img
-    let stiker = await sticker(img)
-stiker = await nStiker(stiker, {
- author: '9672-4995',
- name: 'nokia'
-})
-    conn.sendMessage(m.chat, stiker, MessageType.sticker, {
-      quoted: m
-    })
-  } else if (args[0]) {
-    let stiker = await sticker(false, args[0])
-    conn.sendMessage(m.chat, stiker, MessageType.sticker, {
-      quoted: m
-    })
-  }
-}
+if (mute || pvmte) return console.log('Ignorando comando [Silence]')
+            if (isMedia) {
+                if (mimetype === 'video/mp4' && message.duration < 15 || mimetype === 'image/gif' && message.duration < 15) {
+                    var mediaData = await decryptMedia(message, uaOverride)
+                    kill.reply(from, mess.wait, id)
+                    var filename = `./lib/media/stickergif.${mimetype.split('/')[1]}`
+                    await fs.writeFileSync(filename, mediaData)
+                    await exec(`gify ${filename} ./lib/media/stickergf.gif --fps=15 --scale=256:256`, async function (error, stdout, stderr) {
+                        var gif = await fs.readFileSync('./lib/media/stickergf.gif', { encoding: "base64" })
+                        await kill.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
+                        .catch(() => {
+                            kill.reply(from, 'Aff! A conversão obteve erros, talvez seja o tamanho do gif ou seu peso.', id)
+                        })
+                    })
+                } else {
+                    kill.reply(from, `Caso receba isso considere 2 motivos.\n\n1 - Isso não é um gif ou video.\n\n2 - O gif ou video tem mais de 15 segundos, passando do limite que posso converter`, id)
+                }
+            } else if (quotedMsg) {
+                if (quotedMsg.mimetype == 'video/mp4' && quotedMsg.duration < 15 || quotedMsg.mimetype == 'image/gif' && quotedMsg.duration < 15) {
+                    var mediaData = await decryptMedia(quotedMsg, uaOverride)
+                    kill.reply(from, mess.wait, id)
+                    var filename = `./lib/media/stickergif.${quotedMsg.mimetype.split('/')[1]}`
+                    await fs.writeFileSync(filename, mediaData)
+                    await exec(`gify ${filename} ./lib/media/stickergf.gif --fps=15 --scale=256:256`, async function (error, stdout, stderr) {
+                        var gif = await fs.readFileSync('./lib/media/stickergf.gif', { encoding: "base64" })
+                        await kill.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
+                        .catch(() => {
+                            kill.reply(from, 'Aff! A conversão obteve erros, talvez seja o tamanho do gif ou seu peso.', id)
+                        })
+                    })
+                } else {
+                    kill.reply(from, `Caso receba isso considere 2 motivos.\n\n1 - Isso não é um gif ou video.\n\n2 - O gif ou video tem mais de 15 segundos, passando do limite que posso converter.`, id)
+                }
+			} else {
+                kill.reply(from, mess.error.St, id)
+            }
 handler.command = /^stic?kergif$/i
 handler.owner = false
 handler.mods = false
