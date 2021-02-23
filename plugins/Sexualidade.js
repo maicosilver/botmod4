@@ -50,8 +50,8 @@ global.bucin = [
   "Você é 94% incestuoso", 
   "Você é 95% comedor-de-casadas",
   "Você é 96% unicornio-sexual",
-  "Você é 97% maniaco-sexual
-  "Você é 14% agenero.",
-  "Você é 98% baitola.",
-  "Você é 100% gay."
+  "Você é 97% maniaco-sexual",
+  "Você é 14% agenero",
+  "Você é 98% baitola",
+  "Você é 100% gay"
 ]
