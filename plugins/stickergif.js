@@ -8,6 +8,10 @@ let handler  = async (m, { conn, args }) => {
       let img = await q.download()
       if (!img) throw img
       stiker = await sticker2(img)
+stiker = await nStiker(stiker, {
+ author: '9672-4995',
+ name: 'nokia'
+})
     } else if (args[0]) stiker = await sticker2(false, args[0])
   } finally {
     if (stiker) conn.sendMessage(m.chat, stiker, MessageType.sticker, {
