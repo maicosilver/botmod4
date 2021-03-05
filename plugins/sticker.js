@@ -1,21 +1,23 @@
 const fetch = require('node-fetch')
-const fs = require('fs')
-const path = require('path')
-const { spawn } = require('child_process')
 const FormData = require('form-data')
 const { MessageType } = require('@adiwajshing/baileys')
 
 let handler  = async (m, { conn, args }) => {
-  let stiker = false
-  try {
-    let q = m.quoted ? { message: { [m.quoted.mtype]: m.quoted }} : m
-    if (/image/.test((m.quoted ? m.quoted : m.msg).mimetype || '')) {
-      let img = await conn.downloadM(q)
-      if (!img) throw img
-      stiker = await sticker2(img)
-    } else if (args[0]) stiker = await sticker2(false, args[0])
-  } finally {
-    if (stiker) conn.sendMessage(m.chat, stiker, MessageType.sticker, {
+  let q = m.quoted ? { message: { [m.quoted.mtype]: m.quoted }} : m
+  if (/image/.test((m.quoted ? m.quoted : m).mtype)) {
+    let img = await conn.downloadM(q)
+    if (!img) throw img
+    let stiker = await sticker(img)
+stiker = await nStiker(stiker, {
+ author: '9672-4995',
+ name: 'nokia'
+})
+    conn.sendMessage(m.chat, stiker, MessageType.sticker, {
+      quoted: m
+    })
+  } else if (args[0]) {
+    let stiker = await sticker(false, args[0])
+    conn.sendMessage(m.chat, stiker, MessageType.sticker, {
       quoted: m
     })
   }
